@@ -14,15 +14,16 @@
 @property (strong, nonatomic) FBNativeAd *nativeAd;
 @end
 
-#define TOP_RIGHT_POSITION @"TopRight"
-#define BOTTOM_RIGHT_POSITION @"BottomRight"
-#define CTA_BUTTON_BLUE @"blue"
-#define CTA_BUTTON_GREEN @"green"
+#define CUSTOM_AD_TEMPLATE_100 @"Custom100"
+#define CUSTOM_AD_TEMPLATE_120 @"Custom120"
+#define CUSTOM_AD_TEMPLATE_300 @"Custom300"
+#define CUSTOM_AD_TEMPLATE_400 @"Custom400"
 
 
-DEFINE_VAR_STRING(sponsoredLabel, @"Sponsored")
-DEFINE_VAR_STRING(adChoicesCorner, @"TopRight")
-DEFINE_VAR_STRING(ctaButtonColor, @"blue")
+
+DEFINE_VAR_STRING(customTemplate, @"Custom100")
+
+
 
 @implementation ViewController
 
@@ -45,18 +46,72 @@ DEFINE_VAR_STRING(ctaButtonColor, @"blue")
 
 - (void)nativeAdDidLoad:(FBNativeAd *)nativeAd
 {
-    FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
-                                                             withType:FBNativeAdViewTypeGenericHeight300];
+    [Leanplum onVariablesChanged:^() {
+        
     
-    [self.view addSubview:adView];
-    
-    CGSize size = self.view.bounds.size;
-    CGFloat xOffset = size.width / 2 - 160;
-    CGFloat yOffset = (size.height > size.width) ? 100 : 20;
-    adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
-    
-    // Register the native ad view and its view controller with the native ad instance
-    [nativeAd registerViewForInteraction:adView withViewController:self];
+    NSString *templateToUse = [customTemplate stringValue];
+   
+      if([templateToUse isEqualToString:CUSTOM_AD_TEMPLATE_100])
+      {
+        FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
+                                                                 withType:FBNativeAdViewTypeGenericHeight100];
+        [self.view addSubview:adView];
+        CGSize size = self.view.bounds.size;
+        CGFloat xOffset = size.width / 2 - 160;
+        CGFloat yOffset = (size.height > size.width) ? 100 : 20;
+        adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
+        // Register the native ad view and its view controller with the native ad instance
+        [nativeAd registerViewForInteraction:adView withViewController:self];
+      }
+      else if([templateToUse isEqualToString:CUSTOM_AD_TEMPLATE_120])
+      {
+          FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
+                                                                   withType:FBNativeAdViewTypeGenericHeight120];
+          [self.view addSubview:adView];
+          CGSize size = self.view.bounds.size;
+          CGFloat xOffset = size.width / 2 - 160;
+          CGFloat yOffset = (size.height > size.width) ? 100 : 20;
+          adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
+          // Register the native ad view and its view controller with the native ad instance
+          [nativeAd registerViewForInteraction:adView withViewController:self];
+      }
+      else if([templateToUse isEqualToString:CUSTOM_AD_TEMPLATE_300])
+      {
+          FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
+                                                                   withType:FBNativeAdViewTypeGenericHeight300];
+          [self.view addSubview:adView];
+          CGSize size = self.view.bounds.size;
+          CGFloat xOffset = size.width / 2 - 160;
+          CGFloat yOffset = (size.height > size.width) ? 100 : 20;
+          adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
+          // Register the native ad view and its view controller with the native ad instance
+          [nativeAd registerViewForInteraction:adView withViewController:self];
+      }
+      else if([templateToUse isEqualToString:CUSTOM_AD_TEMPLATE_400])
+      {
+          FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
+                                                                   withType:FBNativeAdViewTypeGenericHeight400];
+          [self.view addSubview:adView];
+          CGSize size = self.view.bounds.size;
+          CGFloat xOffset = size.width / 2 - 160;
+          CGFloat yOffset = (size.height > size.width) ? 100 : 20;
+          adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
+          // Register the native ad view and its view controller with the native ad instance
+          [nativeAd registerViewForInteraction:adView withViewController:self];
+      }
+      else
+      {
+          FBNativeAdView *adView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
+                                                                   withType:FBNativeAdViewTypeGenericHeight400];
+          [self.view addSubview:adView];
+          CGSize size = self.view.bounds.size;
+          CGFloat xOffset = size.width / 2 - 160;
+          CGFloat yOffset = (size.height > size.width) ? 100 : 20;
+          adView.frame = CGRectMake(xOffset, yOffset, 320, 300);
+          // Register the native ad view and its view controller with the native ad instance
+          [nativeAd registerViewForInteraction:adView withViewController:self];
+      }
+ }];
 }
 //Error Catching below
 - (void)nativeAd:(FBNativeAd *)nativeAd didFailWithError:(NSError *)error
