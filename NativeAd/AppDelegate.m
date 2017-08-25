@@ -19,12 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     #ifdef DEBUG
         LEANPLUM_USE_ADVERTISING_ID;
-        [Leanplum setAppId:@"app_fw6x1clIHUjMmIVg2nmfgwHvCT3AAXjzmIfsOyGwZMU"
-        withDevelopmentKey:@"dev_Oi5PowpWoBUDyArOYVhmgzbaJr80IABV2PSggQMiTSE"];
+        [Leanplum setAppId:@"app_2eHyjOuGuvuPsQGs3dgmRw3txIwUhDrScg7Qf8AGu6c"
+        withDevelopmentKey:@"dev_4AeNv8VLFlACsmmBFnnNlmLV0ljaqfEPpLpVZJWzs8o"];
         NSLog(@"Launched w DEV keys");
     #else
-        [Leanplum setAppId:@"app_fw6x1clIHUjMmIVg2nmfgwHvCT3AAXjzmIfsOyGwZMU"
-         withProductionKey:@"prod_2ub8JQ40tFHTyUDye4apv7aRvzcFvaIKod7oK527IUI"];
+        [Leanplum setAppId:@"app_2eHyjOuGuvuPsQGs3dgmRw3txIwUhDrScg7Qf8AGu6c"
+         withProductionKey:@"prod_9A8ZLBADzDbTsDfEwT88GZt8Tm0SvA4vwI690BTME5Y"];
     #endif
     
     [Leanplum syncResourcePaths:@[@"MyResources/.*"] excluding:nil async:YES];
