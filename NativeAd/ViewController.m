@@ -15,8 +15,9 @@
 @end
 
 FBAdView *myAdView;
+FBNativeAd *nativeAd;
 
-DEFINE_VAR_INT(customTemplate, 100)
+DEFINE_VAR_INT(customTemplate, 400)
 
 @implementation ViewController
 
@@ -42,7 +43,7 @@ DEFINE_VAR_INT(customTemplate, 100)
     NSLog(@"We Here");
     int template = [customTemplate intValue];
 
-    
+  
     [Leanplum onVariablesChangedAndNoDownloadsPending:^() {
         
       if(template == 100)
