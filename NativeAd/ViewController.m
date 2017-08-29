@@ -51,7 +51,7 @@ DEFINE_VAR_INT(customTemplate, 400)
 {
     NSLog(@"We Here");
     int template = [customTemplate intValue];
-   [Leanplum onVariablesChangedAndNoDownloadsPending:^() {
+    [Leanplum onVariablesChangedAndNoDownloadsPending:^() {
       if(template == 100)
       {
         FBNativeAdView *myAdView = [FBNativeAdView nativeAdViewWithNativeAd:nativeAd
